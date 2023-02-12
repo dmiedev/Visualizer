@@ -8,9 +8,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -24,68 +21,137 @@ import java.util.ResourceBundle;
  * The controller of the main application view.
  */
 public class MainController implements Initializable {
+    /**
+     * A {@code Label} that contains the name of the current loaded playlist.
+     */
     @FXML
     private Label playlistLabel;
+
+    /**
+     * A {@code Label} that contains the current time of the current track.
+     */
     @FXML
     private Label currentTimeLabel;
+
+    /**
+     * A {@code Label} that contains the duration of the current track.
+     */
     @FXML
     private Label durationLabel;
+
+    /**
+     * A {@code Label} that contains the name of the current track.
+     */
     @FXML
     private Label trackLabel;
+
+    /**
+     * A {@code Slider} that controls the playback of the current track.
+     */
     @FXML
     private Slider playbackSlider;
+
+    /**
+     * A {@code Slider} that controls the volume of the current track.
+     */
     @FXML
     private Slider volumeSlider;
+
+    /**
+     * A {@code Button} that pauses or plays the current track.
+     */
     @FXML
     private Button playbackButton;
+
+    /**
+     * A {@code Button} that switches to the previous track in the playlist.
+     */
     @FXML
     private Button previousTrackButton;
+
+    /**
+     * A {@code Button} that switches to the next track in the playlist.
+     */
     @FXML
     private Button nextTrackButton;
+
+    /**
+     * A {@code Pane} that the visualization is drawn on.
+     */
     @FXML
     private Pane spectrumCanvas;
 
+
     /**
-     * The
+     * The tracks of the currently loaded playlist.
      */
     private File[] tracks;
+
+    /**
+     * The index of the current track in {@link MainController#tracks}.
+     */
     private int currentTrackIndex = 0;
 
+
+    /**
+     * The player of the current track.
+     */
     private MediaPlayer player;
-    private AudioSpectrumCanvasListener spectrumListener;
+
+    /**
+     * The visualizer.
+     */
+    private Visualizer visualizer;
+
+
+    /**
+     * The playback status of the current track.
+     */
     private PlaybackStatus playbackStatus = PlaybackStatus.PAUSED;
 
-    private boolean spectrumCanvasIsPrepared = false;
 
-    private Rectangle[] spectrumBars;
-    private final int SPECTRUM_BARS_COUNT = 25;
-
-    private Circle[][] spectrumDots;
-    private final double SPECTRUM_DOT_MIN_RADIUS = 3;
-    private final double SPECTRUM_DOT_MAX_RADIUS = 6;
-
-
+    /**
+     * Called to initialize a controller after its root element has been completely processed.
+     * @param url The location used to resolve relative paths for the root object, or {@code null} if the location is
+     *            not known.
+     *
+     * @param resourceBundle The resources used to localize the root object, or {@code null} if the root object was not
+     *                       localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playbackSlider.valueProperty().addListener(this::onPlaybackSliderValueChanging);
     }
 
+    /**
+     * Reacts to the value of {@link MainController#playbackSlider} changing.
+     * @param observable The {@code ObservableValue} which value changed
+     * @param oldValue The old value
+     * @param newValue The new value
+     */
     private void onPlaybackSliderValueChanging(
             ObservableValue<? extends Number> observable,
             Number oldValue,
             Number newValue) {
-        double millis = newValue.doubleValue() * player.getCycleDuration().toMillis();
-        Duration newDuration = new Duration(millis);
-        setTimeLabel(currentTimeLabel, newDuration);
+        double newPosition = newValue.doubleValue() * player.getCycleDuration().toMillis();
+        setTimeLabel(currentTimeLabel, new Duration(newPosition));
     }
 
-    private File showDirectoryChooser() {
+    /**
+     * Shows a {@code DirectoryChooser} to select a playlist directory.
+     * @return The selected playlist
+     */
+    private File showPlaylistChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select a Playlist");
         Stage stage = (Stage) trackLabel.getScene().getWindow();
         return directoryChooser.showDialog(stage);
     }
 
+    /**
+     * Shows an {@code Alert} with a message that the program failed to load a track.
+     * @param trackName The name of the track
+     */
     private void showTrackFailureAlert(String trackName) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Failed to load track");
@@ -94,6 +160,10 @@ public class MainController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Shows an {@code Alert} with a message that the program failed to load a playlist.
+     * @param playlistName The name of the playlist.
+     */
     private void showPlaylistFailureAlert(String playlistName) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Failed to load playlist");
@@ -102,15 +172,22 @@ public class MainController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Reacts to the click on the "Select Playlist" button.
+     */
     @FXML
     protected void onSelectPlaylistButtonClicked() {
-        File playlist = showDirectoryChooser();
+        File playlist = showPlaylistChooser();
         if (playlist == null) {
             return;
         }
         loadPlaylist(playlist);
     }
 
+    /**
+     * Loads tracks of a playlist.
+     * @param playlist The playlist
+     */
     private void loadPlaylist(File playlist) {
         File[] loadedTracks;
         try {
@@ -124,7 +201,7 @@ public class MainController implements Initializable {
             showPlaylistFailureAlert(playlist.getName());
             return;
         }
-        this.tracks = loadedTracks;
+        tracks = loadedTracks;
         currentTrackIndex = 0;
         playlistLabel.setText(playlist.getName());
         if (Arrays.asList(loadedTracks).isEmpty()) {
@@ -136,25 +213,21 @@ public class MainController implements Initializable {
             return;
         }
         Arrays.sort(loadedTracks);
-        prepareSpectrumCanvas();
         loadCurrentTrack();
     }
 
-    private void prepareSpectrumCanvas() {
-        if (spectrumCanvasIsPrepared) {
-            return;
-        }
-        setUpSpectrumDots();
-        setUpSpectrumBars();
-        spectrumCanvasIsPrepared = true;
-    }
-
+    /**
+     * Sets the text of the {@link MainController#trackLabel} based on the current track.
+     */
     private void setTrackLabelText() {
         String trackName = tracks[currentTrackIndex].getName();
         String trackLabelText = String.format("[ %d / %d ]   %s", currentTrackIndex + 1, tracks.length, trackName);
         trackLabel.setText(trackLabelText);
     }
 
+    /**
+     * Loads the current track.
+     */
     private void loadCurrentTrack() {
         if (player != null) {
             stop();
@@ -162,16 +235,18 @@ public class MainController implements Initializable {
         setControlsDisable(true);
         setTrackLabelText();
 
-        if (!tracks[currentTrackIndex].exists()) {
-            showTrackFailureAlert(tracks[currentTrackIndex].getName());
+        File currentTrack = tracks[currentTrackIndex];
+
+        if (!currentTrack.exists()) {
+            showTrackFailureAlert(currentTrack.getName());
             enableTrackButtons();
             return;
         }
         try {
-            Media media = new Media(tracks[currentTrackIndex].toURI().toString());
+            Media media = new Media(currentTrack.toURI().toString());
             player = new MediaPlayer(media);
         } catch (MediaException exception) {
-            showTrackFailureAlert(tracks[currentTrackIndex].getName());
+            showTrackFailureAlert(currentTrack.getName());
             enableTrackButtons();
             return;
         }
@@ -179,6 +254,9 @@ public class MainController implements Initializable {
         setUpPlayer();
     }
 
+    /**
+     * Sets up the {@link MainController#player}.
+     */
     private void setUpPlayer() {
         player.setOnReady(this::onPlayerReady);
         player.setOnEndOfMedia(this::onPlayerTrackEnd);
@@ -187,27 +265,27 @@ public class MainController implements Initializable {
 
         player.setAudioSpectrumInterval(1 / 40.0);
         player.setAudioSpectrumThreshold(-80);
-        player.setAudioSpectrumNumBands(SPECTRUM_BARS_COUNT);
+        player.setAudioSpectrumNumBands(25);
 
-        if (spectrumListener == null) {
-            createSpectrumListener();
+        if (visualizer == null) {
+            visualizer = new Visualizer(
+                    spectrumCanvas,
+                    player.getAudioSpectrumNumBands(),
+                    player.getAudioSpectrumThreshold(),
+                    80.0f);
+            visualizer.setUp();
         } else {
-            spectrumListener.clear();
+            visualizer.clear();
         }
-        player.setAudioSpectrumListener(spectrumListener);
+        player.setAudioSpectrumListener(visualizer);
     }
 
-    private void createSpectrumListener() {
-        spectrumListener = new AudioSpectrumCanvasListener(
-                spectrumBars,
-                spectrumCanvas.getHeight(),
-                spectrumDots,
-                SPECTRUM_DOT_MIN_RADIUS,
-                SPECTRUM_DOT_MAX_RADIUS,
-                player.getAudioSpectrumThreshold(),
-                80.0f);
-    }
-
+    /**
+     * Reacts to the change of {@link MainController#player}'s {@code currentTime}.
+     * @param observable The {@code ObservableValue} which value changed
+     * @param oldValue The old value
+     * @param newValue The new value
+     */
     private void onPlayerCurrentTimeChange(
             ObservableValue<? extends Duration> observable,
             Duration oldValue,
@@ -216,6 +294,10 @@ public class MainController implements Initializable {
         playbackSlider.setValue(percent);
     }
 
+    /**
+     * Enables or disables the controls of this controller.
+     * @param disabled Whether the controls should be disabled
+     */
     private void setControlsDisable(boolean disabled) {
         playbackButton.setDisable(disabled);
         volumeSlider.setDisable(disabled);
@@ -224,17 +306,28 @@ public class MainController implements Initializable {
         nextTrackButton.setDisable(disabled);
     }
 
+    /**
+     * Enables {@link MainController#previousTrackButton} and {@link MainController#nextTrackButton}.
+     */
     private void enableTrackButtons() {
         previousTrackButton.setDisable(false);
         nextTrackButton.setDisable(false);
     }
 
+    /**
+     * Called when the {@link MainController#player} is ready.
+     */
     private void onPlayerReady() {
         setControlsDisable(false);
         volumeSlider.setValue(player.getVolume());
         setTimeLabel(durationLabel, player.getCycleDuration());
     }
 
+    /**
+     * Sets the text of a time label based on the provided {@code duration}.
+     * @param label The time label.
+     * @param duration The duration
+     */
     private void setTimeLabel(Label label, Duration duration) {
         int minutes = Double.valueOf(duration.toMinutes()).intValue();
         int seconds = Double.valueOf(duration.toSeconds() % 60).intValue();
@@ -242,6 +335,9 @@ public class MainController implements Initializable {
         label.setText(durationText);
     }
 
+    /**
+     * Called when the {@link MainController#player} finishes playing the current track.
+     */
     private void onPlayerTrackEnd() {
         if (++currentTrackIndex >= tracks.length) {
             currentTrackIndex = 0;
@@ -252,6 +348,9 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Stops the playback.
+     */
     private void stop() {
         player.seek(Duration.ZERO);
         currentTimeLabel.setText("0:00");
@@ -260,6 +359,9 @@ public class MainController implements Initializable {
         pause();
     }
 
+    /**
+     * Called when the {@link MainController#playbackButton} is pressed.
+     */
     @FXML
     protected void onPlaybackButtonPressed() {
         if (playbackStatus == PlaybackStatus.PLAYING) {
@@ -269,11 +371,17 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Called when the {@link MainController#playbackSlider} is pressed.
+     */
     @FXML
     protected void onPlaybackSliderMousePressed() {
         player.pause();
     }
 
+    /**
+     * Called when the {@link MainController#playbackSlider} is released.
+     */
     @FXML
     protected void onPlaybackSliderMouseReleased() {
         Duration position = player.getCycleDuration().multiply(playbackSlider.getValue());
@@ -283,64 +391,27 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Resumes or starts the playback of the current track.
+     */
     private void play() {
         player.play();
         playbackButton.setText("❚ ❚");
         playbackStatus = PlaybackStatus.PLAYING;
     }
 
+    /**
+     * Pauses the playback of current track.
+     */
     private void pause() {
         player.pause();
         playbackButton.setText("▶️");
         playbackStatus = PlaybackStatus.PAUSED;
     }
 
-    private void setUpSpectrumBars() {
-        spectrumBars = new Rectangle[SPECTRUM_BARS_COUNT];
-
-        double canvasWidth = spectrumCanvas.getWidth();
-        double canvasHeight = spectrumCanvas.getHeight();
-        final double barPadding = 10.0;
-        final double bottomPadding = 5.0;
-        double barWidth = (canvasWidth - (SPECTRUM_BARS_COUNT + 1) * barPadding) / SPECTRUM_BARS_COUNT;
-
-        for (int i = 0; i < SPECTRUM_BARS_COUNT; i++) {
-            Color color = Color.hsb((double) i / SPECTRUM_BARS_COUNT * 30, 1, 1);
-            Rectangle bar = new Rectangle(barWidth, 0, color);
-            bar.setArcHeight(10);
-            bar.setArcWidth(20);
-            bar.relocate(barPadding + (barWidth + barPadding) * i, canvasHeight - bottomPadding);
-            spectrumBars[i] = bar;
-        }
-        spectrumCanvas.getChildren().addAll(spectrumBars);
-    }
-
-    private void setUpSpectrumDots() {
-        final int rowsNumber = 5;
-        final int columnsNumber = 13;
-        spectrumDots = new Circle[rowsNumber][columnsNumber];
-
-        double canvasWidth = spectrumCanvas.getWidth();
-        double canvasHeight = spectrumCanvas.getHeight();
-        final int padding = 20;
-        double horizontalMargin =
-                (canvasWidth - padding * 2 - SPECTRUM_DOT_MIN_RADIUS * 2 * columnsNumber) / (columnsNumber - 1);
-        double verticalMargin =
-                (canvasHeight - padding * 2 - SPECTRUM_DOT_MIN_RADIUS * 2 * rowsNumber) / (rowsNumber - 1);
-        final Color color = Color.rgb(255, 255, 255, 0.5);
-
-        for (int i = 0; i < rowsNumber; i++) {
-            double rowPosition = padding + (SPECTRUM_DOT_MIN_RADIUS * 2 + verticalMargin) * i;
-            for (int j = 0; j < columnsNumber; j++) {
-                double radius = (SPECTRUM_DOT_MAX_RADIUS - SPECTRUM_DOT_MIN_RADIUS) / 2 + SPECTRUM_DOT_MIN_RADIUS;
-                Circle dot = new Circle(radius, color);
-                dot.relocate(padding + (SPECTRUM_DOT_MIN_RADIUS * 2 + horizontalMargin) * j, rowPosition);
-                spectrumDots[i][j] = dot;
-            }
-            spectrumCanvas.getChildren().addAll(spectrumDots[i]);
-        }
-    }
-
+    /**
+     * Called when the {@link MainController#nextTrackButton} is clicked.
+     */
     @FXML
     protected void onNextTrackButtonClicked() {
         if (++currentTrackIndex >= tracks.length) {
@@ -350,6 +421,9 @@ public class MainController implements Initializable {
         play();
     }
 
+    /**
+     * Called when the {@link MainController#previousTrackButton} is clicked.
+     */
     @FXML
     protected void onPreviousTrackButtonClicked() {
         if (--currentTrackIndex < 0) {

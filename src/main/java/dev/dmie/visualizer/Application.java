@@ -10,6 +10,9 @@ import java.io.IOException;
  * The music visualizer application.
  */
 public class Application extends javafx.application.Application {
+    /**
+     * @see javafx.application.Application#start(Stage)
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));

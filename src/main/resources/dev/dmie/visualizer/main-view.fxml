@@ -4,16 +4,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="BOTTOM_CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.dmie.visualizer.MainController">
+<VBox alignment="BOTTOM_CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.dmie.visualizer.MainController">
    <Pane fx:id="spectrumCanvas" prefHeight="300.0" style="-fx-background-color: black;" />
    <VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" spacing="10.0">
-      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0">
-         <Button fx:id="previousTrackButton" disable="true" mnemonicParsing="false" onMouseClicked="#onPreviousTrackButtonClicked" text="❚◀️" />
-         <Button fx:id="playbackButton" disable="true" mnemonicParsing="false" onMouseClicked="#onPlaybackButtonPressed" text="▶️" />
-         <Button fx:id="nextTrackButton" disable="true" mnemonicParsing="false" onMouseClicked="#onNextTrackButtonClicked" text="▶️❚" />
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            spacing="10.0">
+         <Button fx:id="previousTrackButton" disable="true" mnemonicParsing="false"
+                 onMouseClicked="#onPreviousTrackButtonClicked" text="❚◀️" />
+         <Button fx:id="playbackButton" disable="true" mnemonicParsing="false" onMouseClicked="#onPlaybackButtonPressed"
+                 text="▶️" />
+         <Button fx:id="nextTrackButton" disable="true" mnemonicParsing="false"
+                 onMouseClicked="#onNextTrackButtonClicked" text="▶️❚" />
          <Separator layoutX="467.0" layoutY="10.0" orientation="VERTICAL" />
          <Label fx:id="currentTimeLabel" text="0:00" />
-         <Slider fx:id="playbackSlider" blockIncrement="0.01" disable="true" max="1.0" onMousePressed="#onPlaybackSliderMousePressed" onMouseReleased="#onPlaybackSliderMouseReleased" prefWidth="250.0" />
+         <Slider fx:id="playbackSlider" blockIncrement="0.01" disable="true" max="1.0"
+                 onMousePressed="#onPlaybackSliderMousePressed" onMouseReleased="#onPlaybackSliderMouseReleased"
+                 prefWidth="250.0" />
          <Label fx:id="durationLabel" layoutX="162.0" layoutY="15.0" text="0:00" />
          <Separator orientation="VERTICAL" />
          <Label layoutX="377.0" layoutY="15.0" text="Volume" />
