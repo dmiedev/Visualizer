@@ -17,10 +17,10 @@ public class AudioSpectrumCanvasListener implements AudioSpectrumListener {
     private boolean dotsAnimationForward = true;
 
     private final int spectrumThreshold;
-    private final double maxMagnitude;
+    private final float maxMagnitude;
 
     private final float[] magnitudeBuffer;
-    private double priorMagnitudeAverage = 0.0;
+    private float priorMagnitudeAverage = 0.0f;
 
     private double lastDotTimestamp = 0.0;
 
@@ -32,7 +32,7 @@ public class AudioSpectrumCanvasListener implements AudioSpectrumListener {
             double minDotRadius,
             double maxDotRadius,
             int spectrumThreshold,
-            double maxMagnitude) {
+            float maxMagnitude) {
         this.bars = bars;
         this.maxBarHeight = maxBarHeight;
         this.dots = dots;
@@ -46,15 +46,16 @@ public class AudioSpectrumCanvasListener implements AudioSpectrumListener {
     }
 
     public void clear() {
-        priorMagnitudeAverage = 0.0;
+        priorMagnitudeAverage = 0.0f;
         lastDotTimestamp = 0.0;
     }
 
     @Override
     public void spectrumDataUpdate(double timestamp, double duration, float[] magnitudes, float[] phases) {
-        double magnitudeGrowthAverage = 0.0;
-        double magnitudeAverage = 0.0;
-        for (int i = 0; i < bars.length; i++) {
+        float magnitudeGrowthAverage = 0.0f;
+        float magnitudeAverage = 0.0f;
+
+        for (int i = 0; i < magnitudes.length; i++) {
             if (magnitudes[i] >= magnitudeBuffer[i]) {
                 magnitudeGrowthAverage += magnitudes[i] - magnitudeBuffer[i];
                 magnitudeBuffer[i] = magnitudes[i];
@@ -65,11 +66,11 @@ public class AudioSpectrumCanvasListener implements AudioSpectrumListener {
 
             updateBarHeight(i);
         }
-        magnitudeAverage /= bars.length;
-        magnitudeGrowthAverage /= bars.length;
+        magnitudeAverage /= magnitudes.length;
+        magnitudeGrowthAverage /= magnitudes.length;
 
         shiftBarsColor(magnitudeGrowthAverage);
-        updateDotsRadius(magnitudeGrowthAverage, magnitudeAverage, timestamp);
+        updateDotsRadius(magnitudeGrowthAverage, timestamp);
 
         priorMagnitudeAverage = magnitudeAverage;
     }
@@ -90,9 +91,9 @@ public class AudioSpectrumCanvasListener implements AudioSpectrumListener {
         }
     }
 
-    private void updateDotsRadius(double magnitudeGrowthAverage, double magnitudeAverage, double timestamp) {
+    private void updateDotsRadius(double magnitudeGrowthAverage, double timestamp) {
         double percent = magnitudeGrowthAverage / priorMagnitudeAverage;
-        if (percent < 0.15 || (timestamp - lastDotTimestamp) < 0.15) {
+        if (percent < 0.15 || (timestamp - lastDotTimestamp) < 0.125) {
             return;
         }
         for (int i = 0; i < dots.length; i++) {

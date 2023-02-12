@@ -205,7 +205,7 @@ public class MainController implements Initializable {
                 SPECTRUM_DOT_MIN_RADIUS,
                 SPECTRUM_DOT_MAX_RADIUS,
                 player.getAudioSpectrumThreshold(),
-                80.0);
+                80.0f);
     }
 
     private void onPlayerCurrentTimeChange(
