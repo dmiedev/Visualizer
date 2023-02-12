@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="BOTTOM_CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.dmie.visualizer.MainController">
+   <Pane fx:id="spectrumCanvas" prefHeight="300.0" style="-fx-background-color: black;" />
+   <VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" spacing="10.0">
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0">
+         <Button fx:id="previousTrackButton" disable="true" mnemonicParsing="false" onMouseClicked="#onPreviousTrackButtonClicked" text="❚◀️" />
+         <Button fx:id="playbackButton" disable="true" mnemonicParsing="false" onMouseClicked="#onPlaybackButtonPressed" text="▶️" />
+         <Button fx:id="nextTrackButton" disable="true" mnemonicParsing="false" onMouseClicked="#onNextTrackButtonClicked" text="▶️❚" />
+         <Separator layoutX="467.0" layoutY="10.0" orientation="VERTICAL" />
+         <Label fx:id="currentTimeLabel" text="0:00" />
+         <Slider fx:id="playbackSlider" blockIncrement="0.01" disable="true" max="1.0" onMousePressed="#onPlaybackSliderMousePressed" onMouseReleased="#onPlaybackSliderMouseReleased" prefWidth="250.0" />
+         <Label fx:id="durationLabel" layoutX="162.0" layoutY="15.0" text="0:00" />
+         <Separator orientation="VERTICAL" />
+         <Label layoutX="377.0" layoutY="15.0" text="Volume" />
+         <Slider fx:id="volumeSlider" blockIncrement="0.05" disable="true" max="1.0" prefWidth="100.0" value="1.0" />
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <HBox alignment="CENTER" maxHeight="-Infinity" spacing="10.0">
+         <Label fx:id="trackLabel" layoutX="328.0" layoutY="15.0" text="---" />
+         <Separator orientation="VERTICAL" />
+         <Button mnemonicParsing="false" onMouseClicked="#onSelectPlaylistButtonClicked" text="Select Playlist" />
+         <Label fx:id="playlistLabel" text="No Playlist Selected" />
+      </HBox>
+   </VBox>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
