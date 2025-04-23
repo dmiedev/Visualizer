@@ -11,6 +11,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.net.URL;
@@ -21,6 +23,11 @@ import java.util.ResourceBundle;
  * The controller of the main application view.
  */
 public class MainController implements Initializable {
+    /**
+     * Main logger.
+     */
+    private static final Logger logger = LogManager.getLogger("dev.dmie");
+
     /**
      * A {@code Label} that contains the name of the current loaded playlist.
      */
@@ -194,10 +201,12 @@ public class MainController implements Initializable {
             loadedTracks = playlist.listFiles(
                     (file) -> file.isFile() && file.getName().matches(".+\\.(aac|m4a|mp3|pcm|wav|aiff)"));
         } catch (SecurityException exception) {
+            logger.error("Access to the playlist was denied");
             showPlaylistFailureAlert(playlist.getName());
             return;
         }
         if (loadedTracks == null) {
+            logger.error("An I/O error occurred while loading playlist");
             showPlaylistFailureAlert(playlist.getName());
             return;
         }
@@ -205,6 +214,7 @@ public class MainController implements Initializable {
         currentTrackIndex = 0;
         playlistLabel.setText(playlist.getName());
         if (Arrays.asList(loadedTracks).isEmpty()) {
+            logger.info("The loaded playlist is empty");
             if (player != null) {
                 stop();
             }
@@ -229,6 +239,7 @@ public class MainController implements Initializable {
      * Loads the current track.
      */
     private void loadCurrentTrack() {
+        logger.info("Loading current track");
         if (player != null) {
             stop();
         }
@@ -238,14 +249,19 @@ public class MainController implements Initializable {
         File currentTrack = tracks[currentTrackIndex];
 
         if (!currentTrack.exists()) {
+            logger.error("Trying to play non-existing track");
             showTrackFailureAlert(currentTrack.getName());
             enableTrackButtons();
             return;
+        }
+        if (currentTrack.getName().endsWith(".mp3")) {
+            logger.warn("Loading an mp3 file, bad length computation is possible");
         }
         try {
             Media media = new Media(currentTrack.toURI().toString());
             player = new MediaPlayer(media);
         } catch (MediaException exception) {
+            logger.error("Failed to create MediaPlayer");
             showTrackFailureAlert(currentTrack.getName());
             enableTrackButtons();
             return;
@@ -258,6 +274,7 @@ public class MainController implements Initializable {
      * Sets up the {@link MainController#player}.
      */
     private void setUpPlayer() {
+        logger.info("Setting up player");
         player.setOnReady(this::onPlayerReady);
         player.setOnEndOfMedia(this::onPlayerTrackEnd);
         player.currentTimeProperty().addListener(this::onPlayerCurrentTimeChange);
@@ -268,6 +285,7 @@ public class MainController implements Initializable {
         player.setAudioSpectrumNumBands(25);
 
         if (visualizer == null) {
+            logger.info("Creating a new visualizer");
             visualizer = new Visualizer(
                     spectrumCanvas,
                     player.getAudioSpectrumNumBands(),
@@ -275,6 +293,7 @@ public class MainController implements Initializable {
                     80.0f);
             visualizer.setUp();
         } else {
+            logger.info("Clearing existing visualizer");
             visualizer.clear();
         }
         player.setAudioSpectrumListener(visualizer);
@@ -352,6 +371,7 @@ public class MainController implements Initializable {
      * Stops the playback.
      */
     private void stop() {
+        logger.debug("Setting all values to zero");
         player.seek(Duration.ZERO);
         currentTimeLabel.setText("0:00");
         durationLabel.setText("0:00");
@@ -364,6 +384,7 @@ public class MainController implements Initializable {
      */
     @FXML
     protected void onPlaybackButtonPressed() {
+        logger.info("Playback button pressed");
         if (playbackStatus == PlaybackStatus.PLAYING) {
             pause();
         } else {
@@ -376,6 +397,7 @@ public class MainController implements Initializable {
      */
     @FXML
     protected void onPlaybackSliderMousePressed() {
+        logger.debug("Pausing while slider is pressed");
         player.pause();
     }
 
@@ -385,6 +407,7 @@ public class MainController implements Initializable {
     @FXML
     protected void onPlaybackSliderMouseReleased() {
         Duration position = player.getCycleDuration().multiply(playbackSlider.getValue());
+        logger.debug("Playback slider released at position {}", position.toString());
         player.seek(position);
         if (playbackStatus == PlaybackStatus.PLAYING) {
             play();
@@ -395,6 +418,7 @@ public class MainController implements Initializable {
      * Resumes or starts the playback of the current track.
      */
     private void play() {
+        logger.info("Starting playback");
         player.play();
         playbackButton.setText("❚ ❚");
         playbackStatus = PlaybackStatus.PLAYING;
@@ -404,6 +428,7 @@ public class MainController implements Initializable {
      * Pauses the playback of current track.
      */
     private void pause() {
+        logger.info("Pausing playback");
         player.pause();
         playbackButton.setText("▶️");
         playbackStatus = PlaybackStatus.PAUSED;
@@ -414,7 +439,9 @@ public class MainController implements Initializable {
      */
     @FXML
     protected void onNextTrackButtonClicked() {
+        logger.info("Next button pressed");
         if (++currentTrackIndex >= tracks.length) {
+            logger.debug("Moving to the start of the playlist");
             currentTrackIndex = 0;
         }
         loadCurrentTrack();
@@ -426,7 +453,9 @@ public class MainController implements Initializable {
      */
     @FXML
     protected void onPreviousTrackButtonClicked() {
+        logger.info("Previous button pressed");
         if (--currentTrackIndex < 0) {
+            logger.debug("Moving to the end of the playlist");
             currentTrackIndex = tracks.length - 1;
         }
         loadCurrentTrack();

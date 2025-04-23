@@ -1,0 +1,146 @@
+1714271179 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271180 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271180 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 288: Creating a new visualizer
+1714271183 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPlaybackButtonPressed() at line 387: Playback button pressed
+1714271183 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271471 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271471 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271471 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271471 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271471 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271476 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPreviousTrackButtonClicked() at line 456: Previous button pressed
+1714271476 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271476 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271476 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271476 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271476 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271477 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onNextTrackButtonClicked() at line 442: Next button pressed
+1714271477 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271477 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271477 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271477 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271477 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271697 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271697 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271697 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271697 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271697 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271808 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPlaybackButtonPressed() at line 387: Playback button pressed
+1714271808 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271817 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271817 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271817 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271817 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271819 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPreviousTrackButtonClicked() at line 456: Previous button pressed
+1714271819 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271819 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271819 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271819 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271819 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271821 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPreviousTrackButtonClicked() at line 456: Previous button pressed
+1714271821 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271821 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271821 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271821 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271821 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271822 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPreviousTrackButtonClicked() at line 456: Previous button pressed
+1714271822 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271822 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271822 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271822 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271822 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271823 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPreviousTrackButtonClicked() at line 456: Previous button pressed
+1714271823 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271823 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271823 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271823 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271823 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271825 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onNextTrackButtonClicked() at line 442: Next button pressed
+1714271825 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271825 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271825 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271825 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271825 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271834 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onNextTrackButtonClicked() at line 442: Next button pressed
+1714271834 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271834 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271834 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271834 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271834 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271838 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onNextTrackButtonClicked() at line 442: Next button pressed
+1714271838 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271838 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271838 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271838 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271838 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271841 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271843 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPreviousTrackButtonClicked() at line 456: Previous button pressed
+1714271843 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271843 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271843 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271843 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271843 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271845 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271845 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271947 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271947 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271947 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271947 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271947 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271949 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271949 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271949 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271949 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271952 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPlaybackButtonPressed() at line 387: Playback button pressed
+1714271952 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271953 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPreviousTrackButtonClicked() at line 456: Previous button pressed
+1714271953 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271953 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271953 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271953 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271953 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714271962 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271962 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271962 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271962 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271965 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271965 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271965 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271965 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271969 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271969 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271969 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271969 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271970 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPreviousTrackButtonClicked() at line 456: Previous button pressed
+1714271970 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714271970 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714271970 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714271970 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714271970 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714272172 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714272172 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714272172 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714272172 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714272486 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714272486 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714272486 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714272486 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714272487 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onPlaybackButtonPressed() at line 387: Playback button pressed
+1714272487 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714272489 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onNextTrackButtonClicked() at line 442: Next button pressed
+1714272489 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714272489 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714272489 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714272489 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714272489 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714272492 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#onNextTrackButtonClicked() at line 442: Next button pressed
+1714272492 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714272492 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714272492 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714272492 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714272492 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback
+1714272726 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#loadCurrentTrack() at line 242: Loading current track
+1714272726 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#pause() at line 431: Pausing playback
+1714272726 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 277: Setting up player
+1714272726 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#setUpPlayer() at line 296: Clearing existing visualizer
+1714272726 [INFO] JavaFX Application Thread - dev.dmie.visualizer.MainController#play() at line 421: Starting playback

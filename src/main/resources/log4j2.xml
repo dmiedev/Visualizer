@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{UNIX} [%level] %t - %C#%M() at line %L: %m%n"/>
+        </Console>
+        <File name="LogFile" fileName="events.log">
+            <PatternLayout pattern="%d{UNIX} [%level] %t - %C#%M() at line %L: %m%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="dev.dmie" level="info" additivity="false">
+            <AppenderRef ref="LogFile"/>
+            <AppenderRef ref="Console" level="fatal"/>
+        </Logger>
+        <Root>
+            <AppenderRef ref="LogFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
