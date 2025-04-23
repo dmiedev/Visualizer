@@ -1,4 +1,4 @@
-=== Uživatelská dokumentace ===
+# Uživatelská dokumentace
 
 Program je jednoduchý vizualizér hudby vytvořený pomocí JavaFX.
 
