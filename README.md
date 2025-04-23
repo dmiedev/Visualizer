@@ -3,16 +3,16 @@
 Program je jednoduchý vizualizér hudby vytvořený pomocí JavaFX.
 
 Pro spuštění programu je potřeba si nainstalovat Java 19 (měla by být správně nastavena proměnná
-prostředí JAVA_HOME), poté spustit v terminálu v adresáři programu příkaz "./mvnw clean javafx:run".
+prostředí `JAVA_HOME`), poté spustit v terminálu v adresáři programu příkaz `./mvnw clean javafx:run`.
 
 Po spuštění programu je otevřeno hlavní okno, v němž je potřeba nejprve stisknout tlačítko
 "Select Playlist" pro výběr playlistu.
 
 Po výběru playlistu do programu budou načteny všechny podporované hudební soubory z vybrané
-složky. Podporované formáty jsou aac, m4a, mp3, pcm, wav a aiff.
+složky. Podporované formáty jsou `aac`, `m4a`, `mp3`, `pcm`, `wav` a `aiff`.
 
-[!] Při nahrání .mp3 souboru s vysokým bitrate je možné, že program nebude schopen správně
-určit jeho délku. Toto je bohužel bugem knihovny javafx.media.
+\[!] Při nahrání `.mp3` souboru s vysokým bitrate je možné, že program nebude schopen správně
+určit jeho délku. Toto je bohužel bugem knihovny `javafx.media`.
 
 Skladby z vybraného playlistu budou uspořádany abecedně podle jejich jmen.
 
